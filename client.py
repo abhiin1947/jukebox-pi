@@ -20,7 +20,7 @@ sock = None
 def replyToDiscovery(sock):
   print "some connection"
   a = sock.recv(100);
-  print "got something here = " + a
+  print "got something here = ", a
   if a == "hello":
     print "Discovery Successful!!"
     sock.write("Hi my name is " + MY_NAME)
