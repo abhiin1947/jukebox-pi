@@ -18,7 +18,7 @@ def replyToDiscovery(sock3):
 
 def EnableDiscovery():
   sock2 = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-  sock2.bind(('',9081))
+  sock2.bind(('',8086))
   sock2.listen(1)
   while(True):
     connection, address = sock2.accept()
