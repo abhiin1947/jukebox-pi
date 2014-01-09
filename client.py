@@ -17,20 +17,20 @@ MY_NAME = "PI Speakers"
 player = None
 sock = None
 
-def replyToDiscovery(sock):
+def replyToDiscovery(sock3):
   print "some connection"
-  a = sock.recv(100);
+  a = sock3.recv(100);
   print "got something here = ", a
   if a == "hello":
     print "Discovery Successful!!"
-    sock.write("Hi my name is " + MY_NAME)
+    sock3.write("Hi my name is " + MY_NAME)
 
 def EnableDiscovery():
-  sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-  sock.bind(('',9081))
-  sock.listen(1)
+  sock2 = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+  sock2.bind(('',9081))
+  sock2.listen(1)
   while(True):
-    connection, address = sock.accept()
+    connection, address = sock2.accept()
     t1 = threading.Thread(target=replyToDiscovery, args = (connection,))
     t1.start()
 
