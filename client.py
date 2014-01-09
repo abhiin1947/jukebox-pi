@@ -15,7 +15,8 @@ GETDATATHREAD = None
 player = None
 sock = None
 
-
+def discoverthread():
+  
 
 def aplayer(): 
   file = "temp.mp3"
@@ -29,7 +30,10 @@ def aplayer():
 def omxplayer():
   global player
   if player != None:
-    player.stdin.write("q")
+    try:
+      player.stdin.write("q")
+    except:
+      pass
     player.kill()
     player = None
   player = subprocess.Popen(["omxplayer", "temp.mp3"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
