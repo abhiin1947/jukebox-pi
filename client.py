@@ -26,7 +26,7 @@ def replyToDiscovery(sock):
     sock.write("Hi my name is " + MY_NAME)
 
 def EnableDiscovery():
-  sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+  sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
   sock.bind(('',9081))
   sock.listen(10)
   while(True):
