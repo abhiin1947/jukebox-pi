@@ -97,7 +97,7 @@ def startdatathread(connection):
 init()
 initsockets()
 
-if ENABLE_DISCOVERY:
+if ENABLE_DISCOVERY == True:
   startDiscovery()
 
 f = None
