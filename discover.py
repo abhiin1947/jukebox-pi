@@ -14,7 +14,7 @@ def replyToDiscovery(sock3):
   print "got something here = ", a
   if a == "hello":
     print "Discovery Successful!!"
-    sock3.write("Hi my name is " + MY_NAME)
+    sock3.send("Hi my name is " + MY_NAME)
 
 def EnableDiscovery():
   sock2 = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
