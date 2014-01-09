@@ -28,7 +28,7 @@ def replyToDiscovery(sock):
 def EnableDiscovery():
   sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
   sock.bind(('',9081))
-  sock.listen(10)
+  sock.listen(1)
   while(True):
     connection, address = sock.accept()
     t1 = threading.Thread(target=replyToDiscovery, args = (connection,))
