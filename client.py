@@ -8,35 +8,12 @@ import socket
 WAIT_UNTIL_DATA = False
 USING_PYGAME = False
 USING_OMXPLAYER = True
-ENABLE_DISCOVERY = True
 
 #Globals
 START_PLAYER = None
 GETDATATHREAD = None
-MY_NAME = "PI Speakers"
 player = None
 sock = None
-
-def replyToDiscovery(sock3):
-  print "some connection"
-  a = sock3.recv(100);
-  print "got something here = ", a
-  if a == "hello":
-    print "Discovery Successful!!"
-    sock3.write("Hi my name is " + MY_NAME)
-
-def EnableDiscovery():
-  sock2 = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-  sock2.bind(('',9081))
-  sock2.listen(1)
-  while(True):
-    connection, address = sock2.accept()
-    t1 = threading.Thread(target=replyToDiscovery, args = (connection,))
-    t1.start()
-
-def startDiscovery():
-  t1 = threading.Thread(target=EnableDiscovery)
-  t1.start()  
 
 def aplayer(): 
   file = "temp.mp3"
@@ -94,11 +71,11 @@ def startdatathread(connection):
   GETDATATHREAD = threading.Thread(target=someFunc)
   GETDATATHREAD.start()
 
+#if ENABLE_DISCOVERY == True:
+#  startDiscovery()
+
 init()
 initsockets()
-
-if ENABLE_DISCOVERY == True:
-  startDiscovery()
 
 f = None
 print "Jukebox-pi is good to go!"
